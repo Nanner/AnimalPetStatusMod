@@ -7,4 +7,6 @@ Tested on game version 1.06.
 SMAPI 0.39.6, available [here](https://github.com/ClxS/SMAPI "SMAPI").
 
 #### Installation
-Place the _AnimalPetStatusMod_ folder in _%appdata%\StardewValley\Mods_ then run SMAPI.
+1. Download the mod files [here](https://github.com/Nanner/AnimalPetStatusMod/releases "AnimalPetStatusMod").
+
+2. Place the _AnimalPetStatusMod_ folder in _%appdata%\StardewValley\Mods_ then run SMAPI.
