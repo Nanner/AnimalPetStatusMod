@@ -3,7 +3,7 @@ A simple Stardew Valley mod that adds an emote above farm animals which haven't 
 
 Tested on game version 1.06.
 
-![example image](https://i.imgur.com/14TE4uX.gifv)
+![example image](https://github.com/Nanner/AnimalPetStatusMod/raw/master/AnimalPetStatusMod.gif)
 
 #### Requirements
 SMAPI 0.39.6, available [here](https://github.com/ClxS/SMAPI "SMAPI").
