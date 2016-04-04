@@ -3,13 +3,13 @@ A simple Stardew Valley mod that adds an emote above farm animals which haven't 
 
 Tested on game version 1.06.
 
-![example image](https://github.com/Nanner/AnimalPetStatusMod/raw/master/AnimalPetStatusMod.gif)
+![example image](https://i.imgur.com/TmrktMj.gif)
 
 #### Requirements
 SMAPI 0.39.6, available [here](https://github.com/ClxS/SMAPI "SMAPI").
 
 #### Installation
-1. Download the mod files [here](https://github.com/Nanner/AnimalPetStatusMod/releases "AnimalPetStatusMod").
+1. Download the mod files [here](https://github.com/Nanner/AnimalPetStatusMod/releases/latest "AnimalPetStatusMod").
 2. Place the _AnimalPetStatusMod_ folder in _%appdata%\StardewValley\Mods_ then run SMAPI.
 3. If desired, altering the _"UpdateInterval"_ variable in the _config.json_ modifies the interval (in seconds) at which the animal pet status is verified and the emote animation played.
 
