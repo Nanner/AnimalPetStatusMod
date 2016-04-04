@@ -8,17 +8,23 @@ namespace AnimalPetStatusMod
 {
     public class AnimalPetStatusMod : Mod
     {
+        public static AnimalPetStatusModConfig ModConfig { get; private set; }
+
         private static int _secondCounter;
-        // Number of seconds before checking if the animals were pet. The longer this interval, the less strain on the game, I hope.
-        private const int SecondsToUpdate = 5;
 
         public override void Entry(params object[] objects)
         {
+            // Load config file (config.json).
+            ModConfig = new AnimalPetStatusModConfig().InitializeConfig(BaseConfigPath);
+
+            // Execute a handler when the save file is loaded.
             PlayerEvents.LoadedGame += PlayerEvents_LoadedGame;
+
             Log.Info("[AnimalPetStatusMod] Animal Pet Status Mod => Initialized");
+            Log.Info("[AnimalPetStatusMod] Update interval: " + ModConfig.UpdateInterval + " seconds.");
         }
 
-        private void PlayerEvents_LoadedGame(object sender, EventArgsLoadedGameChanged e)
+        private static void PlayerEvents_LoadedGame(object sender, EventArgsLoadedGameChanged e)
         {
             // Only load the event handler after the save file has been loaded.
             GameEvents.OneSecondTick += GameEvents_OneSecondTick;
@@ -26,13 +32,15 @@ namespace AnimalPetStatusMod
 
         private static void GameEvents_OneSecondTick(object sender, EventArgs e)
         {
+            // The logic in this handler will be executed once every <ModConfig.UpdateInterval> seconds.
             _secondCounter++;
-            if (_secondCounter < SecondsToUpdate)
+            if (_secondCounter < ModConfig.UpdateInterval)
             {
                 return;
             }
             _secondCounter = 0;
 
+            // Only check for animal status if the player is somewhere in the farm.
             var currentLocation = Game1.currentLocation;
             if (currentLocation == null)
             {
@@ -49,6 +57,7 @@ namespace AnimalPetStatusMod
                 return;
             }
 
+            // For each existing animal, play the "anger cloud"-ish emote thingy if it hasn't been pet yet today.
             if (animals.Count > 0)
             {
                 foreach (var animal in animals.Where(animal => !animal.wasPet))
